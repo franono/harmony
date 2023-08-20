@@ -45,12 +45,12 @@ import (
 const (
 	// defaultTraceTimeout is the amount of time a single transaction can execute
 	// by default before being forcefully aborted.
-	defaultTraceTimeout = 5 * time.Second
+	defaultTraceTimeout = 300 * time.Second
 
 	// defaultTraceReExec is the number of blocks the tracer is willing to go back
 	// and re-execute to produce missing historical state necessary to run a specific
 	// trace.
-	defaultTraceReexec = uint64(128)
+	defaultTraceReexec = uint64(5000000)
 
 	err
 )
