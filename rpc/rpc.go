@@ -33,6 +33,7 @@ const (
 	HTTPPortOffset = 500
 	// WSPortOffset ..
 	WSPortOffset = 800
++       CallTimeout = 300 * time.Second
 
 	netNamespace   = "net"
 	netV1Namespace = "netv1"
@@ -159,8 +160,8 @@ func getAPIs(hmy *hmy.Harmony, config nodeconfig.RPCServerConfig) []rpc.API {
 		NewPublicHarmonyAPI(hmy, V2),
 		NewPublicBlockchainAPI(hmy, V1, config.RateLimiterEnabled, config.RequestsPerSecond),
 		NewPublicBlockchainAPI(hmy, V2, config.RateLimiterEnabled, config.RequestsPerSecond),
-		NewPublicContractAPI(hmy, V1, config.RateLimiterEnabled, config.RequestsPerSecond, config.EvmCallTimeout),
-		NewPublicContractAPI(hmy, V2, config.RateLimiterEnabled, config.RequestsPerSecond, config.EvmCallTimeout),
+		NewPublicContractAPI(hmy, V1, config.RateLimiterEnabled, config.RequestsPerSecond, CallTimeout),
+		NewPublicContractAPI(hmy, V2, config.RateLimiterEnabled, config.RequestsPerSecond, CallTimeout),
 		NewPublicTransactionAPI(hmy, V1),
 		NewPublicTransactionAPI(hmy, V2),
 		NewPublicPoolAPI(hmy, V1, config.RateLimiterEnabled, config.RequestsPerSecond),
@@ -186,7 +187,7 @@ func getAPIs(hmy *hmy.Harmony, config nodeconfig.RPCServerConfig) []rpc.API {
 		publicAPIs = append(publicAPIs,
 			NewPublicHarmonyAPI(hmy, Eth),
 			NewPublicBlockchainAPI(hmy, Eth, config.RateLimiterEnabled, config.RequestsPerSecond),
-			NewPublicContractAPI(hmy, Eth, config.RateLimiterEnabled, config.RequestsPerSecond, config.EvmCallTimeout),
+			NewPublicContractAPI(hmy, Eth, config.RateLimiterEnabled, config.RequestsPerSecond, CallTimeout),
 			NewPublicTransactionAPI(hmy, Eth),
 			NewPublicPoolAPI(hmy, Eth, config.RateLimiterEnabled, config.RequestsPerSecond),
 			eth.NewPublicEthService(hmy, "eth"),
