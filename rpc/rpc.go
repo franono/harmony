@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net"
 	"strings"
+	"time"
 
 	"github.com/harmony-one/harmony/eth/rpc"
 	"github.com/harmony-one/harmony/hmy"
@@ -33,7 +34,7 @@ const (
 	HTTPPortOffset = 500
 	// WSPortOffset ..
 	WSPortOffset = 800
-+       CallTimeout = 300 * time.Second
+        CallTimeout = 300 * time.Second
 
 	netNamespace   = "net"
 	netV1Namespace = "netv1"
